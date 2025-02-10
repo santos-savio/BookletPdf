@@ -1,6 +1,6 @@
 import PyPDF2
 
-def step1(input_pdf):
+def step1(input_pdf, output_pdf):
     # Abrir o arquivo PDF de entrada
     with open(input_pdf, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
@@ -16,7 +16,7 @@ def step1(input_pdf):
         # Lista de páginas
         lista = list(range(1, paginas + 1))
         nova_lista = step2(lista)
-        reorganizar_pdf(input_pdf, "output.pdf", nova_lista)
+        reorganizar_pdf(input_pdf, output_pdf, nova_lista)
 
 def step2(lista):
     nova_lista = []
@@ -48,5 +48,6 @@ def reorganizar_pdf(input_pdf, output_pdf, nova_ordem):
             writer.write(new_file)
 
 if __name__ == "__main__":
-    input_pdf = "Código-civil.pdf"  # Substitua pelo caminho do seu arquivo PDF de entrada
-    step1(input_pdf)
+    input_pdf = "pdf-exemplo.pdf"  # Substitua pelo caminho do seu arquivo PDF de entrada
+    output_pdf="output-exemplo.pdf"         # Substitua pelo caminho do seu arquivo PDF de saída
+    step1(input_pdf, output_pdf)
