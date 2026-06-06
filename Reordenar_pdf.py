@@ -1,9 +1,8 @@
-import PyPDF2
+import pypdf
 
 def step1(input_pdf, output_pdf):
-    # Abrir o arquivo PDF de entrada
     with open(input_pdf, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
+        reader = pypdf.PdfReader(file)
         paginas = len(reader.pages)  # Obter o número de páginas do PDF
 
         # Verificar se o número de páginas é múltiplo de 4
@@ -36,8 +35,8 @@ def step2(lista):
 def reorganizar_pdf(input_pdf, output_pdf, nova_ordem):
     # Abrir o arquivo PDF de entrada
     with open(input_pdf, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        writer = PyPDF2.PdfWriter()
+        reader = pypdf.PdfReader(file)
+        writer = pypdf.PdfWriter()
 
         # Reorganizar as páginas de acordo com a nova ordem
         for page_num in nova_ordem:
