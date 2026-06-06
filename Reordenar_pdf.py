@@ -1,4 +1,4 @@
-import pypdf
+import PyPDF2 as pypdf
 
 def step1(input_pdf, output_pdf):
     with open(input_pdf, 'rb') as file:
