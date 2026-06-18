@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, send_file, jsonify
+from werkzeug.middleware.proxy_fix import ProxyFix
 import PyPDF2
 import io
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_prefix=1)
 
 
 def _reorder_for_booklet(page_list):
